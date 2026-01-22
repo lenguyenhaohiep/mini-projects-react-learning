@@ -12,7 +12,7 @@ import SnakeGamePage from './pages/SnakeGamePage';
 function App() {
   return (
     <div className="App">
-    <BrowserRouter>
+    <BrowserRouter basename="/mini-projects-react-learning">
       <Routes>
         <Route path="/" element={<HomePage />}/>
         <Route path="/todo" element={<TodoListPage />}/>
