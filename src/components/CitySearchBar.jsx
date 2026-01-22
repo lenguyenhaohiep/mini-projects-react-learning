@@ -41,11 +41,13 @@ function CitySearchBar({ onSelectedCity }) {
         }
 
         if (e.key === "Enter") {
-            const item = suggestions[active];
-            setCity(item);
-            setSuggestions([]);
-            if (onSelectedCity) {
-                onSelectedCity(item);
+            if (suggestions.length > 0) {
+                const item = suggestions[active];
+                setCity(item);
+                setSuggestions([]);
+                if (onSelectedCity) {
+                    onSelectedCity(item);
+                }
             }
         }
     };
