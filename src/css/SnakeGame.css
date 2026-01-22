@@ -1,0 +1,144 @@
+.snake-game {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.game-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: xxx-large;
+    font-family: fantasy;
+    background: cadetblue;
+    padding: 20px;
+}
+
+.board {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.high-score {
+    text-align: center;
+    font-weight: bold;
+    font-size: x-large;
+    flex: 0 1 auto;
+    background: chocolate;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.high-score span:nth-child(2) {
+
+}
+
+.score {
+    text-align: center;
+    font-weight: bold;
+    font-size: x-large;
+    flex: 0 1 auto;
+    border-radius: 5px;
+    background: yellowgreen;
+    padding: 5px;
+    margin: 10px;
+}
+
+.score span:nth-child(2) {
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    /* horizontal */
+    align-items: center;
+    /* vertical */
+}
+
+.matrix {
+    display: flex;
+    flex-direction: column;
+    /* stack rows vertically */
+    gap: 0px;
+    /* gap between rows */
+}
+
+.row {
+    display: flex;
+    /* cells in a row */
+    gap: 0px;
+    /* gap between cells */
+}
+
+.cell {
+    width: 25px;
+    /* fixed width */
+    height: 25px;
+    /* fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightblue;
+    border: 1px solid #333;
+    font-size: 12px;
+}
+
+.target {
+    background-color: rgb(226, 43, 52);
+}
+
+.snake {
+    background-color: blueviolet;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 300px;
+  max-width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.high-score span {
+    padding: 5px;
+}
+
+.score span {
+    padding: 5px;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.hint {
+    text-align: center;
+    animation: wave 2s linear infinite;
+    font-size: x-large;
+}
+
+.btn-selected {
+    background-color:darkkhaki;
+}

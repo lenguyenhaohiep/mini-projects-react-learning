@@ -1,0 +1,79 @@
+@import "~weather-icons/css/weather-icons.css";
+
+.autocomplete {
+    list-style: none;
+    padding: 0;
+    border: 1px solid black;
+    position: absolute;
+    z-index: 1000;
+    background-color: #ffffff;
+}
+
+.autocomplete-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.autocomplete-item:hover {
+    font-weight: bold;
+    background-color: #f0f0f0;
+    /* optional hover background */
+}
+
+.weather {
+    display: flex;
+    /* two divs side by side */
+    gap: 20px;
+    /* space between the two divs */
+}
+
+.box {
+    padding: 10px;
+}
+
+.current-weather {}
+
+.forecast-weather {
+    display: flex;
+    /* children in a row */
+    flex-wrap: wrap;
+    /* wrap to next line if needed */
+    gap: 5px;
+    flex: 1;
+}
+
+.forecast-weather-item {
+    padding: 5px 10px;
+    background-color: lightblue;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.forecast-weather-item p {
+    text-align: center;
+    /* all paragraphs centered */
+}
+
+/* second paragraph only */
+.forecast-weather-item p:nth-child(2) {
+    font-weight: bold;
+    font-size: 1.5rem;
+    /* larger text */
+}
+
+.weather-icon {
+    font-size: 60px;
+    display: block;
+    font-family: 'weathericons';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-width: 54px;
+    text-align: center;
+    color: #924da3;
+}
