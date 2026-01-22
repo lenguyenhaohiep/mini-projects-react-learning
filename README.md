@@ -7,11 +7,15 @@
 
 ## Run
 
- ```npm start````
+ ```
+ npm start
+````
 
 
 ## Try it out
 
 [Todo List](https://lenguyenhaohiep.github.io/mini-projects-react-learning/#/todo)
+
 [Weather](https://lenguyenhaohiep.github.io/mini-projects-react-learning/#/weather)
+
 [Snake](https://lenguyenhaohiep.github.io/mini-projects-react-learning/#/snake)
