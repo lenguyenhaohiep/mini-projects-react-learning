@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import TodoList from './components/TodoList';
 import TodoBart from './components/TodoBar';
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, Routes, HashRouter } from 'react-router-dom';
 import TodoListPage from './pages/TodoListPage';
 import WeatherPage from  './pages/WeatherPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -12,7 +12,7 @@ import SnakeGamePage from './pages/SnakeGamePage';
 function App() {
   return (
     <div className="App">
-    <BrowserRouter basename="/mini-projects-react-learning">
+    <HashRouter>
       <Routes>
         <Route path="/" element={<HomePage />}/>
         <Route path="/todo" element={<TodoListPage />}/>
@@ -20,7 +20,7 @@ function App() {
         <Route path="/snake" element={<SnakeGamePage />}/>
         <Route path="*" element={<NotFoundPage />}/>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
     </div>
   );
 }
