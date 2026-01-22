@@ -37,6 +37,7 @@ function WeatherDetails({ latitude, longitude }) {
                             forecastData.hourly.time
                                 .map((time, originalIndex) => ({ time, originalIndex }))
                                 .filter(({ time }) => new Date(time) > new Date(forecastData.current_weather.time))
+                                .slice(0, 20)
                                 .map(({ time, originalIndex }) => (
                                     <div key={originalIndex} className="forecast-weather-item">
                                         <p>{forecastData.hourly.time[originalIndex]}</p>

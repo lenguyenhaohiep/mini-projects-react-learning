@@ -3,8 +3,10 @@ import { useEffect, useState, version } from "react";
 function CitySearchBar({ onSelectedCity }) {
 
     const [query, setQuery] = useState('');
-    const [suggestions, setSuggestions] = useState([])
-    const [city, setCity] = useState(null)
+    const [suggestions, setSuggestions] = useState([]);
+    const [city, setCity] = useState(null);
+    const [active, setActive] = useState(0);
+
 
 
     const handleCity = (e) => {
@@ -27,16 +29,37 @@ function CitySearchBar({ onSelectedCity }) {
         }
     }, [query]);
 
+    const handleKeydown = (e) => {
+        if (e.key === "ArrowDown") {
+            setActive((active + 1) % suggestions.length);
+            e.preventDefault();
+        }
+
+        if (e.key === "ArrowUp") {
+            setActive((active - 1 + suggestions.length) % suggestions.length);
+            e.preventDefault();
+        }
+
+        if (e.key === "Enter") {
+            const item = suggestions[active];
+            setCity(item);
+            setSuggestions([]);
+            if (onSelectedCity) {
+                onSelectedCity(item);
+            }
+        }
+    };
+
     return <>
         <div>
-            <input type="text" value={query} onChange={handleCity} placeholder="Enter City"
+            <input type="text" value={query} onChange={handleCity} placeholder="Enter City" onKeyDown={handleKeydown}
                 style={{ width: "100%" }}
             />
             {
                 suggestions && suggestions.length > 0 && (
                     <ul className="autocomplete">
                         {
-                            suggestions.map(item => (<li className="autocomplete-item"
+                            suggestions.map((item, i) => (<li className="autocomplete-item"
                                 key={item.id}
                                 onClick={() => {
                                     setCity(item);
@@ -44,6 +67,10 @@ function CitySearchBar({ onSelectedCity }) {
                                     if (onSelectedCity) {
                                         onSelectedCity(item);
                                     }
+                                }}
+                                style={{
+                                    background: i === active ? "#f0f0f0" : "transparent",
+                                    fontWeight: i === active ? "bold" : "normal"
                                 }}
                             >
                                 {`${item.name},${item.admin2},${item.admin1},${item.country}`}

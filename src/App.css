@@ -57,5 +57,10 @@ button {
 
 .todo-item span {
   font-size: 18px;
+  width: 60%;
 }
 
+
+.todo-item:hover {
+  background: #bde1ff;
+}
