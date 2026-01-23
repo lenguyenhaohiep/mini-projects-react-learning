@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import SnakeGameBoard from "./SnakeGameBoard";
 import SnakeGameGrid from "./SnakeGameGrid";
 import SnakeGameModal from "./SnakeGameModal";
@@ -20,7 +20,7 @@ function SnakeGame() {
         stateRef.current = state;
     }, [state]);
 
-    const handleCaseDown = (e) => {
+    const handleCaseDown = useCallback((e) => {
         if (e.key === "Escape" && stateRef.current !== "OVER") {
             setState("PAUSE");
             return;
@@ -38,22 +38,22 @@ function SnakeGame() {
             }
             setDirection(e.key);
         }
-    }
+    }, []);
 
-    const handleClick = (e) => {
+    const handleClick = useCallback((e) => {
         if (state === "OVER") {
             setState("NEW");
         } else if (state == "NEW") {
             setState("PLAY");
         }
-    }
+    }, [state]);
 
-    const handleGameOver = () => {
+    const handleGameOver = useCallback(() => {
         setState("OVER");
         if (highestScore < score) {
             setHighestScore(score)
         }
-    }
+    }, [state, score]);
 
     useEffect(() => {
         window.addEventListener("keydown", handleCaseDown);
@@ -62,7 +62,7 @@ function SnakeGame() {
             window.removeEventListener("keydown", handleCaseDown);
             window.removeEventListener("click", handleClick);
         }
-    }, []);
+    }, [handleCaseDown, handleClick]);
 
     const resetGame = () => {
         setScore(0);

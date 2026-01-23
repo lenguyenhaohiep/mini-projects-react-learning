@@ -61,7 +61,8 @@ function CitySearchBar({ onSelectedCity }) {
                 suggestions && suggestions.length > 0 && (
                     <ul className="autocomplete">
                         {
-                            suggestions.map((item, i) => (<li className="autocomplete-item"
+                            suggestions.map((item, i) => (<li 
+                                className={`autocomplete-item ${i === active ? "item-active" : ""}`}
                                 key={item.id}
                                 onClick={() => {
                                     setCity(item);
@@ -69,10 +70,6 @@ function CitySearchBar({ onSelectedCity }) {
                                     if (onSelectedCity) {
                                         onSelectedCity(item);
                                     }
-                                }}
-                                style={{
-                                    background: i === active ? "#f0f0f0" : "transparent",
-                                    fontWeight: i === active ? "bold" : "normal"
                                 }}
                             >
                                 {`${item.name},${item.admin2},${item.admin1},${item.country}`}

@@ -17,7 +17,7 @@
     cursor: pointer;
 }
 
-.autocomplete-item:hover {
+.autocomplete-item:hover , .item-active {
     font-weight: bold;
     background-color: #f0f0f0;
     /* optional hover background */
