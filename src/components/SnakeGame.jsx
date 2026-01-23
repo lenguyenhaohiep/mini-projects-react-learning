@@ -25,7 +25,7 @@ function SnakeGame() {
             setState("PAUSE");
             return;
         }
-        if (VALID_DIRECTIONS.includes(e.key)) {
+        if (VALID_DIRECTIONS.includes(e.key) && stateRef.current === "PLAY") {
             const currentDir = directionRef.current;
             if (
                 (currentDir === "ArrowUp" && e.key === "ArrowDown") ||
@@ -85,8 +85,9 @@ function SnakeGame() {
 
         {state === "NEW" && (<p className="hint">Choose your level or click anywhere to play</p>)}
         {state === "PLAY" && (<p className="hint">Press ESC to pause</p>)}
-        {state === "PLAY" &&
-            (<SnakeGameGrid level={level} direction={direction} state={state} onGameOver={handleGameOver} onEat={(score) => setScore(score)}></SnakeGameGrid>)}
+        <div style={{ display: state === "PLAY" ? "block" : "none" }}>
+            (<SnakeGameGrid level={level} direction={direction} state={state} onGameOver={handleGameOver} onEat={(score) => setScore(score)}></SnakeGameGrid>)
+        </div>
         <SnakeGameModal isOpen={state === "OVER"} onClose={() => resetGame()} title="Game Over">
             <p>Your Score {score}</p>
             <p>Click anywhere to replay</p>
